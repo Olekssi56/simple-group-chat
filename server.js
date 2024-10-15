@@ -56,12 +56,7 @@ app.get('/getMessageList', (req, res) => {
     });
 });
 
-// Handle any other routes
-app.get('*', (req, res) => {
-    res.status(404).json({ message: 'Not Found' });
-});
-
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on ${port}`);
 });
