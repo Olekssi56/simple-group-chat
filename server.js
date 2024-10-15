@@ -3,18 +3,18 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors()); // Add this line to enable CORS
 
-// MySQL database connection
+// MySQL database connection (use environment variables in production)
 const db = mysql.createConnection({
-    host: 'localhost',  // Change if necessary
-    user: 'root',       // Change if necessary
-    password: '',       // Change if necessary
-    database: 'calm'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'calm'
 });
 
 db.connect((err) => {
@@ -54,6 +54,11 @@ app.get('/getMessageList', (req, res) => {
         }
         res.json(results);
     });
+});
+
+// Handle any other routes
+app.get('*', (req, res) => {
+    res.status(404).json({ message: 'Not Found' });
 });
 
 // Start the server
