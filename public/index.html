@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Disclaimer Modal -->
+    <div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="disclaimerModalLabel">Disclaimer</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to our chat room. This is just a platform to vent and decompress after a work day. Please be advised of the following essential points:</p>
+                    <ul>
+                        <li>No Monitoring: This chat room is not actively monitored. Participants are responsible for their interactions and content shared within this space.</li>
+                        <li>No Medical Advice: The discussions and content in this chat room do not constitute medical advice. Participants must consult a qualified healthcare professional for medical concerns, diagnoses, or treatments.</li>
+                        <li>Personal Responsibility: Your participation in this chat room comes with the empowerment to take full responsibility for your contributions and interactions. Please exercise caution and respect when sharing personal information or advice.</li>
+                        <li>Community Guidelines: We encourage a respectful and supportive environment. However, due to the unmonitored nature of this chat room, we cannot guarantee all participants' adherence to these guidelines.</li>
+                        <li>Limitation of Liability: The administrators of this chat room are not liable for any content shared by participants or any actions taken based on discussions within this space.</li>
+                    </ul>
+                    <p>You acknowledge and accept this disclaimer by continuing to use this chat room.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-target="#initialsModal" data-bs-toggle="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initials Modal -->
+    <div class="modal fade" id="initialsModal" tabindex="-1" aria-labelledby="initialsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="initialsModalLabel">Enter Initials</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="initialsInput" placeholder="Enter your initials">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="joinChat">Join Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Room Header -->
+    <div class="container mt-4">
+        <div class="text-center">
+            <h1>Chat Room</h1>
+            <p class="text-muted">Connect with fellow APRNs anonymously to share experiences and support each other.</p>
+        </div>
+    </div>
+
+    <!-- Message Container -->
+    <div class="container mt-4" id="chatContainer">
+        <div id="messageList" class="list-group">
+            <!-- Messages will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Message Input Section -->
+    <div class="container mt-4 mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="messageInput" placeholder="Type your message...">
+            <button class="btn btn-primary" id="sendMessage">Send</button>
+        </div>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
