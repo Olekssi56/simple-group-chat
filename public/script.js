@@ -30,29 +30,43 @@ function createMessageElement(message) {
     messageDiv.classList.add("message", "list-group-item");
 
     // Check if the message is mine based on initials
-    if (message.initial == userInitials) {
+    const isMine = message.initial === userInitials;
+
+    // Create a container for the message header (name and time)
+    const headerDiv = document.createElement("div");
+    headerDiv.classList.add("message-header");
+
+    const nameP = document.createElement("p");
+    nameP.classList.add("name");
+    nameP.textContent = isMine ? "You" : message.initial; // Display "You" for mine
+
+    const timeP = document.createElement("p");
+    timeP.classList.add("time");
+    timeP.textContent = message.create_time; // Format the date
+
+    // Append name and time to the header
+    headerDiv.appendChild(nameP);
+    headerDiv.appendChild(timeP);
+
+    // Create the message content
+    const messageP = document.createElement("p");
+    messageP.classList.add("message-content");
+    messageP.textContent = message.message;
+
+    // Append header and message content to the messageDiv
+    messageDiv.appendChild(headerDiv);
+    messageDiv.appendChild(messageP);
+
+    // Set class for message balloon
+    if (isMine) {
         messageDiv.classList.add("my-message");
     } else {
         messageDiv.classList.add("other-message");
     }
 
-    const nameP = document.createElement("p");
-    nameP.classList.add("name");
-    nameP.textContent = message.initial;
-
-    const timeP = document.createElement("p");
-    timeP.classList.add("time");
-    timeP.textContent = message.create_time;
-
-    const messageP = document.createElement("p");
-    messageP.textContent = message.message;
-
-    messageDiv.appendChild(nameP);
-    messageDiv.appendChild(timeP);
-    messageDiv.appendChild(messageP);
-
     return messageDiv;
 }
+
 
 // Function to load messages from API
 function loadMessages() {
@@ -64,7 +78,6 @@ function loadMessages() {
     fetch("http://localhost:3000/getMessageList")
         .then(response => response.json())
         .then(messages => {
-            console.log("messages", messages);
             const messageList = document.getElementById("messageList");
             messageList.innerHTML = ""; // Clear the chat
             messages.reverse().forEach(message => {

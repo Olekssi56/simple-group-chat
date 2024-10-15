@@ -45,7 +45,7 @@ app.post('/addMessage', (req, res) => {
 
 // API to get the message list from the database
 app.get('/getMessageList', (req, res) => {
-    const query = 'SELECT initial, message, create_time FROM message ORDER BY create_time DESC';
+    const query = 'SELECT id, initial, message, DATE_FORMAT(create_time, "%W %l:%i %p") AS create_time FROM message ORDER BY id DESC';
 
     db.query(query, (err, results) => {
         if (err) {
