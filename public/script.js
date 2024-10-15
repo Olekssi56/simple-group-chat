@@ -75,7 +75,7 @@ function loadMessages() {
     const isAtBottom = chatContainer.scrollHeight - chatContainer.scrollTop === chatContainer.clientHeight;
 
     // Simulate API call to fetch message list
-    fetch("http://localhost:3000/getMessageList")
+    fetch("https://simple-group-chat.onrender.com/getMessageList")
         .then(response => response.json())
         .then(messages => {
             const messageList = document.getElementById("messageList");
@@ -101,7 +101,7 @@ function scrollToBottom() {
 // Function to post a new message
 function postMessage(text) {
     // Simulate API call to add a message
-    fetch("http://localhost:3000/addMessage", {
+    fetch("https://simple-group-chat.onrender.com/addMessage", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
