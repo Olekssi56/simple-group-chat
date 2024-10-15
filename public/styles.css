@@ -26,7 +26,7 @@ body {
 .other-message {
     background-color: #f1f1f1; /* Light gray for others */
     align-self: flex-start; /* Align to the left */
-    min-width: 300px;
+    min-width: 250px;
 }
 
 /* Styling for my messages */
@@ -40,8 +40,8 @@ body {
 .message-header {
     display: flex;
     justify-content: space-between; /* Space out name and time */
+    width: calc(100% - 20px);
     align-items: center;
-    gap: 20px;
     margin-bottom: 5px; /* Space between header and message content */
     font-size: 0.85em;
     color: #6c757d; /* Muted text for header */
