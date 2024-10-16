@@ -111,12 +111,13 @@ function postMessage(text) {
             message: text
         })
     }).then(() => {
+        console.log("Message posted successfully");
         loadMessages(); // Reload the messages after posting
     });
 }
 
 // Auto-refresh messages
-setInterval(loadMessages, 2000);
+setInterval(loadMessages, 1000);
 
 // **Sending a message by pressing Enter key**
 document.getElementById("messageInput").addEventListener("keypress", function (event) {
